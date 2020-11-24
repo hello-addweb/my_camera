@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_camera_pluggin/my_cameranew.dart';
-import 'package:my_camera_pluggin/my_camera_plugin.dart';
+import 'package:my_camera_plugin/my_cameranew.dart';
+import 'package:my_camera_plugin/my_camera_plugin.dart';
 
 class OcrTextDetail extends StatefulWidget {
   final OcrText ocrText;

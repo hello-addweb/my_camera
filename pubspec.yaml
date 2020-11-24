@@ -1,7 +1,7 @@
-name: my_camera_pluggin
+name: my_camera_plugin
 description: A new Flutter Camera plugin and it is give to more functionality with scanner and OCR.
 version: 0.0.1
-homepage: https://github.com/nilam-addweb/My_camer_plugin.git
+homepage: https://github.com/hello-addweb/my_camera.git
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  my_camera_pluggin:
+  my_camera_plugin:
     path: ../
 
 

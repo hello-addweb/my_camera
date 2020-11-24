@@ -1,17 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:my_camera_pluggin/my_cameranew.dart';
-import 'package:my_camera_pluggin/my_camera_plugin.dart';
 import 'package:my_camera_example/ocr_text_detail.dart';
-
-
+import 'package:my_camera_plugin/my_camera_plugin.dart';
+import 'package:my_camera_plugin/my_cameranew.dart';
 
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
-
 
 class _HomeState extends State<Home> {
   // int _cameraBarcode = FlutterMobileVision.CAMERA_BACK;
@@ -54,7 +51,6 @@ class _HomeState extends State<Home> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-
           title: Text('OCR'),
         ),
         body: Stack(children: [
@@ -80,7 +76,7 @@ class _HomeState extends State<Home> {
       value: MyCamera.CAMERA_BACK,
     ));
 
-   /* cameraItems.add(DropdownMenuItem(
+    /* cameraItems.add(DropdownMenuItem(
       child: Text('FRONT'),
       value: MyCamera.CAMERA_FRONT,
     ));*/
@@ -95,7 +91,6 @@ class _HomeState extends State<Home> {
   ///
   /// Barcode Screen
   ///
-
 
   ///
   /// Barcode Method
@@ -130,10 +125,6 @@ class _HomeState extends State<Home> {
         value: _cameraOcr,
       ),
     ));
-
-
-
-
 
     items.add(SwitchListTile(
       title: const Text('Auto focus:'),
@@ -185,7 +176,7 @@ class _HomeState extends State<Home> {
         tiles: _textsOcr
             .map(
               (ocrText) => OcrTextWidget(ocrText),
-        )
+            )
             .toList(),
       ),
     );
@@ -221,24 +212,21 @@ class _HomeState extends State<Home> {
     if (!mounted) return;
 
     setState(() => _textsOcr = texts);
-
   }
 
-///
-/// Face Screen
-///
+  ///
+  /// Face Screen
+  ///
 
-
-///
-/// Face Method
-///
+  ///
+  /// Face Method
+  ///
 
 }
 
 ///
 /// BarcodeWidget
 ///
-
 
 ///
 /// OcrTextWidget
@@ -247,7 +235,6 @@ class OcrTextWidget extends StatelessWidget {
   final OcrText ocrText;
 
   OcrTextWidget(this.ocrText);
-
 
   @override
   Widget build(BuildContext context) {
