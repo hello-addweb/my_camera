@@ -1,6 +1,6 @@
-# my_camera
+# custom_camera
 
-my_camera makes it super easy to add camera to your Flutter app
+custom_camera makes it super easy to add camera to your Flutter app
 
 # Features 
 Capture image
@@ -18,13 +18,13 @@ QR Code Scanner
 
 OCR
 
-Custome Design of camera
+Custom Design of camera
 
 # Usage
 
-First, add My_camera as a dependency in your pubspec.yaml file.
+First, add custom_camera as a dependency in your pubspec.yaml file.
 
-# And  add some pemission in manifest file
+# And  add some permission in manifest file
 ```
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -96,7 +96,6 @@ int _cameraOcr = MyCamera.CAMERA_BACK;
   bool _showTextOcr = true;
   Call _previewOcr;
   List<OcrText> _textsOcr = [];
-
 
  Future<Null> _read() async {
   List<OcrText> texts = [];
