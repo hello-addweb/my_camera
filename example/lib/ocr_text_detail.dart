@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:custom_camera/my_cameranew.dart';
 import 'package:custom_camera/my_camera_plugin.dart';
+import 'package:flutter/material.dart';
 
 class OcrTextDetail extends StatefulWidget {
   final OcrText ocrText;
@@ -11,9 +10,7 @@ class OcrTextDetail extends StatefulWidget {
   _OcrTextDetailState createState() => _OcrTextDetailState();
 }
 
-
 class _OcrTextDetailState extends State<OcrTextDetail> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

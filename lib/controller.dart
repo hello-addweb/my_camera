@@ -22,8 +22,11 @@ class MyCameraController {
       myCameraState,
     );
   }
+
+  @visibleForTesting
   final MethodChannel channel;
-  final CameraAccessDenied = 'PERMISSION_NOT_GRANTED';
+  //final CameraAccessDenied = 'PERMISSION_NOT_GRANTED';
+  final cameraaccessdenied = 'PERMISSION_NOT_GRANTED';
   final _MyCameraState _myCameraState;
 
   Future<dynamic> _handleMethodCall(MethodCall call) async {
@@ -53,7 +56,7 @@ class MyCameraController {
     });
 
 
-    _myCameraState.setState(() {});
+  //  _myCameraState.setState(() {});
   }
 
   Future<void> setPreviewRatio(CameraPreviewRatio cameraPreviewRatio) async {
@@ -83,7 +86,6 @@ class MyCameraController {
 
     if (success) {
       _myCameraState._cameraPreviewRatio = cameraPreviewRatio;
-      _myCameraState.setState(() {});
     }
   }
 

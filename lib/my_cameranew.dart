@@ -1,23 +1,21 @@
-
 library my_camera;
 
 import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
-import 'my_camera_plugin.dart';
-import 'lifecycle_handler.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-part 'controller.dart';
+import 'my_camera_plugin.dart';
 
+part 'controller.dart';
 
 enum FlashType { auto, on, off, torch }
 enum CameraType { front, rear }
 enum CameraPreviewRatio { r16_9, r11_9, r4_3, r1 }
-
 
 typedef void CameraCreatedCallback(MyCameraController controller);
 typedef void ImageCapturedCallback(String path);
@@ -30,19 +28,16 @@ class MyCamera extends StatefulWidget {
 
   static const Size PREVIEW = Size(640, 480);
 
-  static final Map<int, List<Size>> _previewSizes = {};
   final CameraCreatedCallback onCameraCreated;
   final ImageCapturedCallback onImageCaptured;
   final FlashType flashType;
   final bool bestPictureSize;
   final String fileNamePrefix;
 
-
   const MyCamera({
     Key key,
     CameraType initialCameraType,
     CameraPreviewRatio cameraPreviewRatio,
-
     FlashType flashType,
     bool bestPictureSize,
     this.onCameraCreated,
@@ -51,7 +46,6 @@ class MyCamera extends StatefulWidget {
   })  : this.initialCameraType = initialCameraType ?? CameraType.rear,
         this.cameraPreviewRatio =
             cameraPreviewRatio ?? CameraPreviewRatio.r16_9,
-
         this.flashType = flashType ?? FlashType.auto,
         this.bestPictureSize = bestPictureSize ?? true,
         super(key: key);
@@ -66,7 +60,7 @@ class _MyCameraState extends State<MyCamera> {
 
   FlashType _flashType;
   bool hasPermission = false;
-  MyCameraController _controller;
+
 
   @override
   void initState() {
@@ -121,10 +115,9 @@ class _MyCameraState extends State<MyCamera> {
         break;
     }
 
-
     final Map<String, dynamic> creationParams = <String, dynamic>{
       "initialCameraType":
-      widget.initialCameraType == CameraType.rear ? "rear" : "front",
+          widget.initialCameraType == CameraType.rear ? "rear" : "front",
       "previewRatio": previewRatio,
       "sessionPreset": sessionPreset,
       "flashType": flashType,
@@ -253,7 +246,6 @@ class _MyCameraState extends State<MyCamera> {
       widget.onCameraCreated(controller);
     }
 
-    _controller = controller;
   }
 
   /// @return the greatest common denominator
@@ -290,5 +282,3 @@ class CustomRect extends CustomClipper<Rect> {
     return true;
   }
 }
-
-

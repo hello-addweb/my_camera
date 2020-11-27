@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:custom_camera/my_cameranew.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:custom_camera/my_cameranew.dart';
 
 import 'new.dart';
 
@@ -26,14 +26,13 @@ class _MyAppState extends State<MyApp> {
   List<String> pictureSizes = [];
   String imagePath;
   Uint8List bytes = Uint8List(0);
-  TextEditingController _inputController;
+
   TextEditingController outputController;
   MyCameraController cameraController;
 
   @override
   initState() {
     super.initState();
-    this._inputController = new TextEditingController();
     this.outputController = new TextEditingController();
   }
 
@@ -78,8 +77,6 @@ class _MyAppState extends State<MyApp> {
                   maxLines: 2,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.wrap_text),
-                    helperText:
-                        'The barcode or qrcode you scan will be displayed in this area.',
                     hintText:
                         'The barcode or qrcode you scan will be displayed in this area.',
                     hintStyle: TextStyle(fontSize: 15),
@@ -124,8 +121,7 @@ class _MyAppState extends State<MyApp> {
               heroTag: 1,
               child: Icon(Icons.switch_camera),
               onPressed: () async {
-                await cameraController.getFlashType();
-                List<FlashType> types = await cameraController.getFlashType();
+                await cameraController.switchCamera();
               },
             ),
             Container(height: 16.0),

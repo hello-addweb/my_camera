@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'package:my_camera_example/ocr_text_detail.dart';
 import 'package:custom_camera/my_camera_plugin.dart';
 import 'package:custom_camera/my_cameranew.dart';
+import 'package:example/ocr_text_detail.dart';
+import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -13,12 +13,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   // int _cameraBarcode = FlutterMobileVision.CAMERA_BACK;
   // int _onlyFormatBarcode = Barcode.ALL_FORMATS;
-  bool _autoFocusBarcode = true;
-  bool _torchBarcode = false;
-  bool _multipleBarcode = false;
-  bool _waitTapBarcode = false;
-  bool _showTextBarcode = false;
-  Call _previewBarcode;
   //List<Barcode> _barcodes = [];
 
   int _cameraOcr = MyCamera.CAMERA_BACK;
@@ -29,22 +23,6 @@ class _HomeState extends State<Home> {
   bool _showTextOcr = true;
   Call _previewOcr;
   List<OcrText> _textsOcr = [];
-
-  //int _cameraOcr= MyCamera.CAMERA_FRONT;
-  bool _autoFocusFace = true;
-  bool _torchFace = false;
-  bool _multipleFace = true;
-  bool _showTextFace = true;
-  Size _previewFace;
-  // List<Face> _faces = [];
-
-  ///
-  ///
-  ///
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,13 +39,6 @@ class _HomeState extends State<Home> {
     );
   }
 
-  ///
-  /// Scan formats
-  ///
-
-  ///
-  /// Camera list
-  ///
   List<DropdownMenuItem<int>> _getCameras() {
     List<DropdownMenuItem<int>> cameraItems = [];
 
@@ -76,29 +47,9 @@ class _HomeState extends State<Home> {
       value: MyCamera.CAMERA_BACK,
     ));
 
-    /* cameraItems.add(DropdownMenuItem(
-      child: Text('FRONT'),
-      value: MyCamera.CAMERA_FRONT,
-    ));*/
-
     return cameraItems;
   }
 
-  ///
-  /// Preview sizes list
-  ///
-
-  ///
-  /// Barcode Screen
-  ///
-
-  ///
-  /// Barcode Method
-  ///
-
-  ///
-  /// OCR Screen
-  ///
   Widget _getOcrScreen(BuildContext context) {
     List<Widget> items = [];
 
@@ -210,27 +161,9 @@ class _HomeState extends State<Home> {
     }
 
     if (!mounted) return;
-
-    setState(() => _textsOcr = texts);
   }
-
-  ///
-  /// Face Screen
-  ///
-
-  ///
-  /// Face Method
-  ///
-
 }
 
-///
-/// BarcodeWidget
-///
-
-///
-/// OcrTextWidget
-///
 class OcrTextWidget extends StatelessWidget {
   final OcrText ocrText;
 
@@ -251,7 +184,3 @@ class OcrTextWidget extends StatelessWidget {
     );
   }
 }
-
-///
-/// FaceWidget
-///

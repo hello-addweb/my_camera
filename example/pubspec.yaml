@@ -1,4 +1,4 @@
-name: my_camera_example
+name: example
 description: Demonstrates how to use the my_camera plugin.
 
 # The following line prevents the package from being accidentally published to
