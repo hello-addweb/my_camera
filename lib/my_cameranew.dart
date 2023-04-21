@@ -2,15 +2,11 @@ library my_camera;
 
 import 'dart:async';
 import 'dart:io';
-import 'dart:typed_data';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'my_camera_plugin.dart';
-
 part 'controller.dart';
 
 enum FlashType { auto, on, off, torch }
@@ -34,17 +30,17 @@ class MyCamera extends StatefulWidget {
   final ImageCapturedCallback onImageCaptured;
   final FlashType flashType;
   final bool bestPictureSize;
-  final String fileNamePrefix;
+  final String? fileNamePrefix;
 
   const MyCamera({
-    Key key,
-    CameraType initialCameraType,
-    CameraPreviewRatio cameraPreviewRatio,
-    FlashType flashType,
-    bool bestPictureSize,
-    this.onCameraCreated,
-    this.onImageCaptured,
-    this.fileNamePrefix,
+    Key? key,
+    CameraType? initialCameraType,
+    CameraPreviewRatio? cameraPreviewRatio,
+    FlashType? flashType,
+    bool? bestPictureSize,
+    required this.onCameraCreated,
+    required this.onImageCaptured,
+     this.fileNamePrefix,
   })  : this.initialCameraType = initialCameraType ?? CameraType.rear,
         this.cameraPreviewRatio =
             cameraPreviewRatio ?? CameraPreviewRatio.r16_9,
@@ -57,10 +53,10 @@ class MyCamera extends StatefulWidget {
 }
 
 class _MyCameraState extends State<MyCamera> {
-  Set<Factory<OneSequenceGestureRecognizer>> gestureRecognizers;
-  CameraPreviewRatio _cameraPreviewRatio;
+  Set<Factory<OneSequenceGestureRecognizer>>? gestureRecognizers;
+  late CameraPreviewRatio _cameraPreviewRatio;
 
-  FlashType _flashType;
+  late FlashType _flashType;
   bool hasPermission = false;
 
   @override
@@ -81,7 +77,7 @@ class _MyCameraState extends State<MyCamera> {
   @override
   Widget build(BuildContext context) {
     String previewRatio;
-    String sessionPreset;
+    String? sessionPreset;
     String flashType;
 
     if (!hasPermission) return Center(child: CircularProgressIndicator());
@@ -126,7 +122,7 @@ class _MyCameraState extends State<MyCamera> {
       "bestPictureSize": widget.bestPictureSize,
     };
 
-    Widget camera;
+    Widget? camera;
 
     if (defaultTargetPlatform == TargetPlatform.android) {
       camera = AndroidView(
@@ -269,7 +265,7 @@ class CustomRect extends CustomClipper<Rect> {
   final double right;
   final double bottom;
 
-  CustomRect({this.right, this.bottom});
+  CustomRect({required this.right, required this.bottom});
 
   @override
   Rect getClip(Size size) {

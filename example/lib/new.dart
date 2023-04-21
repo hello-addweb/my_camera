@@ -21,16 +21,18 @@ class _HomeState extends State<Home> {
   bool _multipleOcr = true;
   bool _waitTapOcr = true;
   bool _showTextOcr = true;
-  Call _previewOcr;
+  Call? _previewOcr;
   List<OcrText> _textsOcr = [];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: Text('OCR'),
         ),
+        /// Add OCR and R&D for OCR
         body: Stack(children: [
           _getOcrScreen(context),
           // _getFaceScreen(context),
@@ -71,7 +73,7 @@ class _HomeState extends State<Home> {
         items: _getCameras(),
         onChanged: (value) {
           _previewOcr = null;
-          setState(() => _cameraOcr = value);
+          setState(() => _cameraOcr = value!);
         },
         value: _cameraOcr,
       ),
@@ -152,7 +154,7 @@ class _HomeState extends State<Home> {
         multiple: _multipleOcr,
         waitTap: _waitTapOcr,
         showText: _showTextOcr,
-        preview: _previewOcr,
+        preview: _previewOcr!,
         camera: _cameraOcr,
         fps: 2.0,
       );

@@ -19,7 +19,7 @@ class MyCameraPlugin {
   ///
   ///
   ///
-  static List<Call> getPreviewSizes(int facing) {
+  static List<Call>? getPreviewSizes(int facing) {
     if (_previewSizes.containsKey(facing)) {
       return _previewSizes[facing];
     }

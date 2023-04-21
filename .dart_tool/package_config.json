@@ -131,10 +131,11 @@
       "name": "custom_camera",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.7"
+      "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-03-29T08:10:39.688937Z",
+
+  "generated": "2023-04-14T06:24:24.798481Z",
   "generator": "pub",
-  "generatorVersion": "2.19.5"
+  "generatorVersion": "2.19.6"
 }

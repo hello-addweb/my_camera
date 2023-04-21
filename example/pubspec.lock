@@ -45,17 +45,18 @@ packages:
     dependency: "direct main"
     description:
       name: cupertino_icons
-      sha256: "518143a923a4c83ddc2fa0bfbbbd750d8e31d21d90ecad21b570ea94df9807b1"
+      sha256: e35129dc44c9118cee2a5603506d823bab99c68393879edb440e0090d07586be
+
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.5"
   custom_camera:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "0.0.4"
+    version: "0.0.4-nullsafety"
   fake_async:
     dependency: transitive
     description:
@@ -176,5 +177,5 @@ packages:
     source: hosted
     version: "2.1.4"
 sdks:
-  dart: ">=2.18.0 <3.0.0"
+  dart: ">=2.19.5 <3.0.0"
   flutter: ">=1.20.0"
