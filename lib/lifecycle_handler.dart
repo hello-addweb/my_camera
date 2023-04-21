@@ -8,10 +8,10 @@ class LifecycleEventHandler extends WidgetsBindingObserver {
   final AsyncCallback onDetached;
 
   LifecycleEventHandler({
-    this.onResumed,
-    this.onInactive,
-    this.onPaused,
-    this.onDetached,
+    required this.onResumed,
+    required this.onInactive,
+    required this.onPaused,
+    required this.onDetached,
   });
 
   @override

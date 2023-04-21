@@ -48,7 +48,7 @@ class MyCameraController {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     if (Platform.isAndroid) return;
 
-    String sessionPreset;
+    String? sessionPreset;
 
 
     await channel.invokeMethod('setSessionPreset', <String, dynamic>{
@@ -89,7 +89,7 @@ class MyCameraController {
     }
   }
 
-  Future<void> captureImage({int maxSize}) async {
+  Future<void> captureImage({int? maxSize}) async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     await channel.invokeMethod('captureImage', <String, dynamic>{
       'maxSize': maxSize,
@@ -107,7 +107,7 @@ class MyCameraController {
     await channel.invokeMethod('turnOff', null);
   }
 
-  Future<List<String>> getPictureSizes() async {
+  Future<List<String>?> getPictureSizes() async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
 
     var result = await channel.invokeMethod('getPictureSizes', null);
