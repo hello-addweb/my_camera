@@ -1,11 +1,7 @@
 import 'dart:async';
 import 'dart:io';
-import 'dart:typed_data';
-
 import 'package:custom_camera/my_cameranew.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'new.dart';
 
 void main() {
@@ -28,7 +24,6 @@ class _MyAppState extends State<MyApp> {
   List<String> pictureSizes = [];
   String? imagePath;
   Uint8List bytes = Uint8List(0);
-
   late TextEditingController outputController;
   late MyCameraController cameraController;
 
