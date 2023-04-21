@@ -14,7 +14,9 @@ import 'my_camera_plugin.dart';
 part 'controller.dart';
 
 enum FlashType { auto, on, off, torch }
+
 enum CameraType { front, rear }
+
 enum CameraPreviewRatio { r16_9, r11_9, r4_3, r1 }
 
 typedef void CameraCreatedCallback(MyCameraController controller);
@@ -60,7 +62,6 @@ class _MyCameraState extends State<MyCamera> {
 
   FlashType _flashType;
   bool hasPermission = false;
-
 
   @override
   void initState() {
@@ -245,7 +246,6 @@ class _MyCameraState extends State<MyCamera> {
     if (widget.onCameraCreated != null) {
       widget.onCameraCreated(controller);
     }
-
   }
 
   /// @return the greatest common denominator
