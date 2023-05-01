@@ -3,17 +3,18 @@ import 'package:flutter/services.dart';
 class MyCameraPlugin {
   static const int CAMERA_BACK = 0;
   static const int CAMERA_FRONT = 1;
-  static const MethodChannel _channel = const MethodChannel('my_camera',);
-
-
+  static const MethodChannel _channel = const MethodChannel(
+    'my_camera',
+  );
 
   static Future<bool> checkForPermission() async {
     return await _channel.invokeMethod('checkForPermission');
-
   }
+
   static final Map<int, List<Call>> _previewSizes = {};
   static const Call PREVIEW = Call(640, 480);
- // static const MethodChannel channel = const MethodChannel('my_camera',);
+
+  // static const MethodChannel channel = const MethodChannel('my_camera',);
 
   ///
   ///
@@ -51,8 +52,8 @@ class MyCameraPlugin {
 
     return list.map((map) => OcrText.fromMap(map)).toList();
   }
-
 }
+
 class OcrText {
   final String value;
   final String language;
@@ -62,13 +63,13 @@ class OcrText {
   final int right;
 
   OcrText(
-      this.value, {
-        this.language = '',
-        this.top = -1,
-        this.bottom = -1,
-        this.left = -1,
-        this.right = -1,
-      });
+    this.value, {
+    this.language = '',
+    this.top = -1,
+    this.bottom = -1,
+    this.left = -1,
+    this.right = -1,
+  });
 
   OcrText.fromMap(Map map)
       : value = map['value'],
@@ -89,6 +90,7 @@ class OcrText {
     };
   }
 }
+
 class Call {
   final int width;
   final int height;
