@@ -181,18 +181,19 @@ class MyCameraController {
 
     return finalTypes;
   }
+  /// Scanning Photo Bar Code or QR Code return content
+
   Future<String> scan() async => await channel.invokeMethod('scan');
 
-  /// Scanning Photo Bar Code or QR Code return content
   Future<String> scanPhoto() async => await channel.invokeMethod('scan_photo');
 
-// Scanning the image of the specified path
+/// Scanning the image of the specified path
   Future<String> scanPath(String path) async {
     assert(path != null && path.isNotEmpty);
     return await channel.invokeMethod('scan_path', {"path": path});
   }
 
-// Parse to code string with uint8list
+/// Parse to code string with uint8list
   Future<String> scanBytes(Uint8List uint8list) async {
     assert(uint8list != null && uint8list.isNotEmpty);
     return await channel.invokeMethod('scan_bytes', {"bytes": uint8list});
