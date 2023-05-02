@@ -6,7 +6,7 @@ description: Demonstrates how to use the my_camera plugin.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 environment:
-  sdk: ">=2.19.2 <3.0.0"
+  sdk: ">=2.19.5 <3.0.0"
 
 dependencies:
   flutter:
