@@ -5,7 +5,7 @@ class MyCameraController {
   MyCameraController._(
       this.channel,
       this._myCameraState,
-      ) : assert(channel != null) {
+      ) {
     channel.setMethodCallHandler(_handleMethodCall);
   }
 
@@ -13,7 +13,6 @@ class MyCameraController {
       int id,
       _MyCameraState myCameraState,
       ) async {
-    assert(id != null);
     final MethodChannel channel = MethodChannel('plugins.flutter.io/my_camera/$id');
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     await channel.invokeMethod('waitForCamera');
@@ -187,19 +186,19 @@ class MyCameraController {
 
 /// Scanning the image of the specified path
   Future<String> scanPath(String path) async {
-    assert(path != null && path.isNotEmpty);
+    assert(path.isNotEmpty);
     return await channel.invokeMethod('scan_path', {"path": path});
   }
 
 /// Parse to code string with uint8list
   Future<String> scanBytes(Uint8List uint8list) async {
-    assert(uint8list != null && uint8list.isNotEmpty);
+    assert(uint8list.isNotEmpty);
     return await channel.invokeMethod('scan_bytes', {"bytes": uint8list});
   }
 
   /// Generating Bar Code Uint8List
   Future<Uint8List> generateBarCode(String code) async {
-    assert(code != null && code.isNotEmpty);
+    assert(code.isNotEmpty);
     return await channel.invokeMethod('generate_barcode', {"code": code});
   }
 

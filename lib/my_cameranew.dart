@@ -239,9 +239,7 @@ class _MyCameraState extends State<MyCamera> {
       this,
     );
 
-    if (widget.onCameraCreated != null) {
-      widget.onCameraCreated(controller);
-    }
+    widget.onCameraCreated(controller);
   }
 
   /// @return the greatest common denominator
@@ -255,9 +253,7 @@ class _MyCameraState extends State<MyCamera> {
   }
 
   void onImageCaptured(String path) {
-    if (widget.onImageCaptured != null) {
-      widget.onImageCaptured(path);
-    }
+    widget.onImageCaptured(path);
   }
 }
 

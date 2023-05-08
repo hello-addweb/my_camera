@@ -153,13 +153,8 @@ class _MyAppState extends State<MyApp> {
 
   Future _scan() async {
     String barcode = await cameraController.scan();
+    this.outputController.text = barcode;
 
-    if (barcode == null) {
-      print('nothing return.');
-    } else {
-      this.outputController.text = barcode;
-      print(barcode);
-    }
   }
 
   _onCameraCreated(MyCameraController controller) {
