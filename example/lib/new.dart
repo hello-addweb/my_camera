@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
         items: _getCameras(),
         onChanged: (value) {
           _previewOcr = null;
-          setState(() => _cameraOcr = value!);
+          setState(() => _cameraOcr != value);
         },
         value: _cameraOcr,
       ),

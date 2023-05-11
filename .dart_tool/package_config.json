@@ -39,13 +39,13 @@
     },
     {
       "name": "flutter",
-      "rootUri": "file:///home/addweb/dev/flutter/packages/flutter",
+      "rootUri": "file:///home/addweb/snap/flutter/common/flutter/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "flutter_test",
-      "rootUri": "file:///home/addweb/dev/flutter/packages/flutter_test",
+      "rootUri": "file:///home/addweb/snap/flutter/common/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -81,7 +81,7 @@
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///home/addweb/dev/flutter/bin/cache/pkg/sky_engine",
+      "rootUri": "file:///home/addweb/snap/flutter/common/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -131,10 +131,10 @@
       "name": "custom_camera",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "2.12"
     }
   ],
-  "generated": "2023-05-10T05:58:12.117197Z",
+  "generated": "2023-05-11T05:48:08.250086Z",
   "generator": "pub",
-  "generatorVersion": "2.19.5"
+  "generatorVersion": "2.19.6"
 }
