@@ -5,7 +5,7 @@ class MyCameraController {
   MyCameraController._(
       this.channel,
       this._myCameraState,
-      ) : assert(channel != null) {
+      ) {
     channel.setMethodCallHandler(_handleMethodCall);
   }
 
@@ -13,7 +13,6 @@ class MyCameraController {
       int id,
       _MyCameraState myCameraState,
       ) async {
-    assert(id != null);
     final MethodChannel channel = MethodChannel('plugins.flutter.io/my_camera/$id');
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     await channel.invokeMethod('waitForCamera');
@@ -48,7 +47,7 @@ class MyCameraController {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     if (Platform.isAndroid) return;
 
-    String sessionPreset;
+    String? sessionPreset;
 
 
     await channel.invokeMethod('setSessionPreset', <String, dynamic>{
@@ -89,7 +88,7 @@ class MyCameraController {
     }
   }
 
-  Future<void> captureImage({int maxSize}) async {
+  Future<void> captureImage({int? maxSize}) async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     await channel.invokeMethod('captureImage', <String, dynamic>{
       'maxSize': maxSize,
@@ -107,7 +106,7 @@ class MyCameraController {
     await channel.invokeMethod('turnOff', null);
   }
 
-  Future<List<String>> getPictureSizes() async {
+  Future<List<String>?> getPictureSizes() async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
 
     var result = await channel.invokeMethod('getPictureSizes', null);
@@ -178,7 +177,6 @@ class MyCameraController {
         }
       }
     }
-
     return finalTypes;
   }
   Future<String> scan() async => await channel.invokeMethod('scan');
@@ -186,21 +184,21 @@ class MyCameraController {
   /// Scanning Photo Bar Code or QR Code return content
   Future<String> scanPhoto() async => await channel.invokeMethod('scan_photo');
 
-// Scanning the image of the specified path
+/// Scanning the image of the specified path
   Future<String> scanPath(String path) async {
-    assert(path != null && path.isNotEmpty);
+    assert(path.isNotEmpty);
     return await channel.invokeMethod('scan_path', {"path": path});
   }
 
-// Parse to code string with uint8list
+/// Parse to code string with uint8list
   Future<String> scanBytes(Uint8List uint8list) async {
-    assert(uint8list != null && uint8list.isNotEmpty);
+    assert(uint8list.isNotEmpty);
     return await channel.invokeMethod('scan_bytes', {"bytes": uint8list});
   }
 
   /// Generating Bar Code Uint8List
   Future<Uint8List> generateBarCode(String code) async {
-    assert(code != null && code.isNotEmpty);
+    assert(code.isNotEmpty);
     return await channel.invokeMethod('generate_barcode', {"code": code});
   }
 

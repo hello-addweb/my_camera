@@ -1,22 +1,21 @@
 import 'dart:async';
 import 'dart:io';
-import 'dart:typed_data';
-
 import 'package:custom_camera/my_cameranew.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
 import 'new.dart';
 
 void main() {
   String id = DateTime.now().toIso8601String();
-  runApp(MaterialApp(home: MyApp(id: id)));
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+      home: MyApp(id: id)));
 }
 
 class MyApp extends StatefulWidget {
-  final String id;
+  final String? id;
 
-  const MyApp({Key key, this.id}) : super(key: key);
+  const MyApp({Key? key, this.id}) : super(key: key);
 
   @override
   _MyAppState createState() => _MyAppState();
@@ -24,11 +23,10 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<String> pictureSizes = [];
-  String imagePath;
+  String? imagePath;
   Uint8List bytes = Uint8List(0);
-
-  TextEditingController outputController;
-  MyCameraController cameraController;
+  late TextEditingController outputController;
+  late MyCameraController cameraController;
 
   @override
   initState() {
@@ -47,10 +45,12 @@ class _MyAppState extends State<MyApp> {
           children: [
             Column(
               children: [
+                /// Ui container
                 Container(
                   color: Colors.transparent,
                   child: Row(
                     children: [
+                      /// Scanning Photo flashLight on or off
                       IconButton(
                         icon: Icon(
                           Icons.flash_off_outlined,
@@ -72,6 +72,7 @@ class _MyAppState extends State<MyApp> {
                     ],
                   ),
                 ),
+                /// The barcode or qrcode you scan will be displayed
                 TextField(
                   controller: this.outputController,
                   maxLines: 2,
@@ -84,6 +85,7 @@ class _MyAppState extends State<MyApp> {
                         EdgeInsets.symmetric(horizontal: 7, vertical: 15),
                   ),
                 ),
+                /// Image Capture in camra
                 Expanded(
                     child: Container(
                   child: MyCamera(
@@ -107,7 +109,7 @@ class _MyAppState extends State<MyApp> {
                   ? Container(
                       width: 100.0,
                       height: 100.0,
-                      child: Image.file(File(imagePath)))
+                      child: Image.file(File(imagePath!)))
                   : Icon(Icons.image),
             )
           ],
@@ -151,13 +153,8 @@ class _MyAppState extends State<MyApp> {
 
   Future _scan() async {
     String barcode = await cameraController.scan();
+    this.outputController.text = barcode;
 
-    if (barcode == null) {
-      print('nothing return.');
-    } else {
-      this.outputController.text = barcode;
-      print(barcode);
-    }
   }
 
   _onCameraCreated(MyCameraController controller) {
@@ -165,7 +162,7 @@ class _MyAppState extends State<MyApp> {
 
     this.cameraController.getPictureSizes().then((pictureSizes) {
       setState(() {
-        this.pictureSizes = pictureSizes;
+        this.pictureSizes = pictureSizes!;
       });
     });
   }
