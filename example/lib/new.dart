@@ -142,9 +142,8 @@ class _HomeState extends State<Home> {
     );
   }
 
-  ///
+
   /// OCR Method
-  ///
   Future<Null> _read() async {
     List<OcrText> texts = [];
     try {

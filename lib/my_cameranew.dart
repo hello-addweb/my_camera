@@ -96,7 +96,7 @@ class _MyCameraState extends State<MyCamera> {
         flashType = "torch";
         break;
     }
-
+/// Camera preview ratio
     switch (_cameraPreviewRatio) {
       case CameraPreviewRatio.r16_9:
         previewRatio = "16:9";
@@ -162,7 +162,6 @@ class _MyCameraState extends State<MyCamera> {
           lesser = constraints.maxHeight;
           constraintRatio = constraints.maxHeight / constraints.maxWidth;
         }
-
         switch (_cameraPreviewRatio) {
           case CameraPreviewRatio.r16_9:
             selectedPreviewRatio = 9.0 / 16.0;

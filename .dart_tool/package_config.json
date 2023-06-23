@@ -320,13 +320,13 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "custom_camera_v",
+      "name": "custom_camera_v2",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-05-17T08:20:29.301651Z",
+  "generated": "2023-05-18T12:00:30.910063Z",
   "generator": "pub",
   "generatorVersion": "3.0.0"
 }
