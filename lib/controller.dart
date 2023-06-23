@@ -97,7 +97,6 @@ class MyCameraController {
 
   Future<void> switchCamera() async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
-
     await channel.invokeMethod('switchCamera', null);
   }
 

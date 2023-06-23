@@ -73,7 +73,7 @@ class _HomeState extends State<Home> {
         items: _getCameras(),
         onChanged: (value) {
           _previewOcr = null;
-          setState(() => _cameraOcr = value!);
+          setState(() => _cameraOcr != value);
         },
         value: _cameraOcr,
       ),
@@ -142,9 +142,8 @@ class _HomeState extends State<Home> {
     );
   }
 
-  ///
+
   /// OCR Method
-  ///
   Future<Null> _read() async {
     List<OcrText> texts = [];
     try {

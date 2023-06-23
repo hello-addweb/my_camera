@@ -11,12 +11,9 @@ void main() {
     debugShowCheckedModeBanner: false,
       home: MyApp(id: id)));
 }
-
 class MyApp extends StatefulWidget {
   final String? id;
-
   const MyApp({Key? key, this.id}) : super(key: key);
-
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -45,12 +42,12 @@ class _MyAppState extends State<MyApp> {
           children: [
             Column(
               children: [
-                /// Ui container
+                /// How to create layouts ui container
                 Container(
                   color: Colors.transparent,
                   child: Row(
                     children: [
-                      /// Scanning Photo flashLight on or off
+                      /// Scanning Photo which gives more functionality of flashLight on or off
                       IconButton(
                         icon: Icon(
                           Icons.flash_off_outlined,
@@ -119,6 +116,7 @@ class _MyAppState extends State<MyApp> {
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisSize: MainAxisSize.min,
           children: [
+            /// Switch camera tap buttion
             FloatingActionButton(
               heroTag: 1,
               child: Icon(Icons.switch_camera),
@@ -127,6 +125,7 @@ class _MyAppState extends State<MyApp> {
               },
             ),
             Container(height: 16.0),
+            /// Camera alt tap buttion
             FloatingActionButton(
                 heroTag: 2,
                 child: Icon(Icons.camera_alt),
@@ -154,7 +153,6 @@ class _MyAppState extends State<MyApp> {
   Future _scan() async {
     String barcode = await cameraController.scan();
     this.outputController.text = barcode;
-
   }
 
   _onCameraCreated(MyCameraController controller) {
