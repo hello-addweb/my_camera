@@ -67,7 +67,7 @@ classpath 'com.karumi:dexter:6.0.0'
 # Add camera
 
 ```
-import 'package:custom_camera/my_cameranew.dart';
+import 'package:custom_camera_v2/my_cameranew.dart';
 
  _onCameraCreated(MyCameraController controller) {
  this.cameraController = controller;

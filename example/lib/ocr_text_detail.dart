@@ -1,4 +1,4 @@
-import 'package:custom_camera/my_camera_plugin.dart';
+import 'package:custom_camera_v2/my_camera_plugin.dart';
 import 'package:flutter/material.dart';
 
 class OcrTextDetail extends StatefulWidget {
