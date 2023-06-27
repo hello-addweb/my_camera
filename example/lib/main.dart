@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:custom_camera/my_cameranew.dart';
+import 'package:custom_camera_v2/my_cameranew.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'new.dart';

@@ -3,21 +3,21 @@
   "packages": [
     {
       "name": "_fe_analyzer_shared",
-      "rootUri": "file:///home/addweb/.pub-cache/hosted/pub.dev/_fe_analyzer_shared-60.0.0",
+      "rootUri": "file:///home/addweb/.pub-cache/hosted/pub.dev/_fe_analyzer_shared-61.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "analyzer",
-      "rootUri": "file:///home/addweb/.pub-cache/hosted/pub.dev/analyzer-5.12.0",
+      "rootUri": "file:///home/addweb/.pub-cache/hosted/pub.dev/analyzer-5.13.0",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
     {
       "name": "args",
-      "rootUri": "file:///home/addweb/.pub-cache/hosted/pub.dev/args-2.4.1",
+      "rootUri": "file:///home/addweb/.pub-cache/hosted/pub.dev/args-2.4.2",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "2.19"
     },
     {
       "name": "async",
@@ -75,19 +75,19 @@
     },
     {
       "name": "file",
-      "rootUri": "file:///home/addweb/.pub-cache/hosted/pub.dev/file-6.1.4",
+      "rootUri": "file:///home/addweb/.pub-cache/hosted/pub.dev/file-7.0.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "3.0"
     },
     {
       "name": "flutter",
-      "rootUri": "file:///home/addweb/snap/flutter/common/flutter/packages/flutter",
+      "rootUri": "file:///home/addweb/fvm/versions/3.10.0/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
     {
       "name": "flutter_test",
-      "rootUri": "file:///home/addweb/snap/flutter/common/flutter/packages/flutter_test",
+      "rootUri": "file:///home/addweb/fvm/versions/3.10.0/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -99,9 +99,9 @@
     },
     {
       "name": "glob",
-      "rootUri": "file:///home/addweb/.pub-cache/hosted/pub.dev/glob-2.1.1",
+      "rootUri": "file:///home/addweb/.pub-cache/hosted/pub.dev/glob-2.1.2",
       "packageUri": "lib/",
-      "languageVersion": "2.15"
+      "languageVersion": "2.19"
     },
     {
       "name": "http_multi_server",
@@ -129,9 +129,9 @@
     },
     {
       "name": "logging",
-      "rootUri": "file:///home/addweb/.pub-cache/hosted/pub.dev/logging-1.1.1",
+      "rootUri": "file:///home/addweb/.pub-cache/hosted/pub.dev/logging-1.2.0",
       "packageUri": "lib/",
-      "languageVersion": "2.18"
+      "languageVersion": "2.19"
     },
     {
       "name": "matcher",
@@ -213,7 +213,7 @@
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///home/addweb/snap/flutter/common/flutter/bin/cache/pkg/sky_engine",
+      "rootUri": "file:///home/addweb/fvm/versions/3.10.0/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -291,7 +291,7 @@
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///home/addweb/.pub-cache/hosted/pub.dev/vm_service-11.6.0",
+      "rootUri": "file:///home/addweb/.pub-cache/hosted/pub.dev/vm_service-11.7.2",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -326,7 +326,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-05-18T12:00:30.910063Z",
+  "generated": "2023-06-26T07:15:46.687542Z",
   "generator": "pub",
   "generatorVersion": "3.0.0"
 }
