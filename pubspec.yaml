@@ -1,6 +1,6 @@
 name: custom_camera_v2
 description: A new Flutter Camera plugin, which gives more functionality of Scanner and OCR.
-version: 0.0.4
+version: 0.0.6
 homepage: https://github.com/hello-addweb/my_camera.git
 
 environment:

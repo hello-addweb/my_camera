@@ -150,11 +150,13 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
+  /// get the barcode string, after scan the code
   Future _scan() async {
     String barcode = await cameraController.scan();
     this.outputController.text = barcode;
   }
 
+  /// get the PictureSize
   _onCameraCreated(MyCameraController controller) {
     this.cameraController = controller;
 
@@ -165,6 +167,7 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  /// navigate to Home screen
   void _navigation() {
     Navigator.push(
       context,

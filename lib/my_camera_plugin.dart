@@ -7,6 +7,7 @@ class MyCameraPlugin {
     'my_camera',
   );
 
+  /// check the permission
   static Future<bool> checkForPermission() async {
     return await _channel.invokeMethod('checkForPermission');
   }
@@ -18,7 +19,7 @@ class MyCameraPlugin {
 
   ///
   ///
-  ///
+  /// get the preview size
   static List<Call>? getPreviewSizes(int facing) {
     if (_previewSizes.containsKey(facing)) {
       return _previewSizes[facing];
@@ -26,6 +27,7 @@ class MyCameraPlugin {
     return null;
   }
 
+  /// read the camera status , is preview , is camera back , is flash on , is autofocus
   static Future<List<OcrText>> read({
     bool flash = false,
     bool autoFocus = true,
@@ -54,6 +56,7 @@ class MyCameraPlugin {
   }
 }
 
+/// Optical character recognition
 class OcrText {
   final String value;
   final String language;

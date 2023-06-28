@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="generator" content="made with love by dartdoc 6.2.1">
+  <meta name="description" content="custom_camera_v2 API docs, for the Dart programming language.">
+  <title>custom_camera_v2 - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="https://github.com/hello-addweb/my_camera.git">custom_camera_v2 package</a></li>
+  </ol>
+  <div class="self-name">custom_camera_v2</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span id="dark-theme-button" class="material-symbols-outlined">
+        brightness_4
+      </span>
+      <span id="light-theme-button" class="material-symbols-outlined">
+        brightness_5
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <h1 id="custom_camera_v2">custom_camera_v2</h1>
+<p>custom_camera_v2 makes it super easy to add camera to your Flutter app</p>
+<h1 id="features">Features</h1>
+<p>Capture image</p>
+<p>Save image in gallery</p>
+<p>Two types  of camera</p>
+<ul>
+<li>Front</li>
+<li>Back</li>
+</ul>
+<p>Flash light</p>
+<p>QR Code Scanner</p>
+<p>OCR</p>
+<p>Custom design of camera</p>
+<h1 id="usage">Usage</h1>
+<p>First, add custom_camera_v2 as a dependency in your pubspec.yaml file.</p>
+<h1 id="and--add-some-permission-in-manifest-file">And  add some permission in manifest file</h1>
+<pre class="language-dart"><code>//1.
+// &lt;uses-permission android:name="android.permission.INTERNET"/&gt; is used in Android applications to grant access to the internet.When an Android app requires this permission, it means that the app needs to establish network connections and communicate with remote servers or services over the internet. This permission allows the app to send and receive data, download resources, make API calls, and interact with online services.
+&lt;uses-permission android:name="android.permission.INTERNET"/&gt; 
+
+//2.
+The permission android.permission.READ_EXTERNAL_STORAGE is used in Android applications to request access to read the external storage of the device. This permission allows the app to read files and folders from the user's external storage, such as the SD card or other storage locations.
+It's important to note that starting from Android 10 (API level 29), apps are required to use the Storage Access Framework (SAF) to access files on external storage. The READ_EXTERNAL_STORAGE permission is considered a "dangerous" permission, meaning that users have to explicitly grant it, and developers need to handle runtime permissions to request and obtain this permission from the user.
+&lt;uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /&gt;
+
+//3.
+// The permission android.permission.WRITE_EXTERNAL_STORAGE is used in Android applications to allow the app to write data to external storage, such as the device's SD card or other external storage devices. This permission is necessary if the app needs to save or modify files on the user's device outside of its private internal storage.
+//It's worth noting that starting from Android 11 (API level 30), apps are generally encouraged to use more granular storage permissions, such as MANAGE_EXTERNAL_STORAGE, to request access to specific directories or types of files on external storage.
+&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;
+
+//4., 5.
+// The &lt;uses-feature&gt; element is used to indicate that the app requires a particular hardware feature on the device to function properly. In this case, android.hardware.camera indicates that the app requires a camera to be present on the device. It does not grant permission to access the camera directly.
+// If your app needs to access the camera and capture photos or videos, you would need to request the appropriate camera permission in addition to specifying the required camera feature. The permission to access the camera is typically declared using the &lt;uses-permission&gt; element in the manifest file, with a declaration like &lt;uses-permission android:name="android.permission.CAMERA" /&gt;.
+// Please note that camera-related permissions should be used responsibly and only when necessary for the functionality of your app. Additionally, starting from Android 6.0 (API level 23), users are prompted to grant permissions at runtime, so you would need to handle the permission request and user consent in your app code as well.
+&lt;uses-permission android:name="android.permission.CAMERA" /&gt;
+&lt;uses-feature android:name="android.hardware.camera" /&gt;
+
+//6.
+// It indicates that the application requires the presence of autofocus capability on the device's camera in order to function properly.
+// The android.hardware.camera.autofocus feature is used to determine if the device's camera supports autofocus functionality. Autofocus is a feature that allows the camera to automatically focus on the subject being captured, resulting in sharper and clearer images.
+&lt;uses-feature android:name="android.hardware.camera.autofocus" /&gt;
+
+</code></pre>
+<h4 id="and-some-dependency-add-in-androidbuildgradle">And some dependency add in android/build.gradle</h4>
+<pre class="language-dart"><code>classpath 'androidx.annotation:annotation:1.0.0'
+classpath 'androidx.core:core:1.0.0'
+classpath 'androidx.appcompat:appcompat:1.0.0'
+classpath 'com.github.bumptech.glide:glide:3.7.0'
+classpath 'com.karumi:dexter:6.0.0'
+</code></pre>
+<h1 id="and-use-this-method-in-your-code">And use this Method in your code</h1>
+<h1 id="add-camera">Add camera</h1>
+<pre class="language-dart"><code>import 'package:custom_camera_v2/my_cameranew.dart';
+
+ _onCameraCreated(MyCameraController controller) {
+ this.cameraController = controller;
+ this.cameraController.getPictureSizes().then((pictureSizes) {
+  setState(() {
+  this.pictureSizes = pictureSizes;
+  });
+});}
+</code></pre>
+<h1 id="add-flash-light">Add flash light</h1>
+<pre class="language-dart"><code>IconButton(
+ icon: Icon(Icons.flash_off_outlined,color: Colors.black,),
+  onPressed: () { 
+ cameraController.setFlashType(FlashType.off);
+ },),
+IconButton(
+icon: Icon(Icons.flash_on,color: Colors.black,),
+ onPressed: () {
+   cameraController.setFlashType(FlashType.torch);
+ },),
+</code></pre>
+<h1 id="add-scanner">Add Scanner</h1>
+<pre class="language-dart"><code> Future _scan() asyncoutputController {
+ String barcode =await cameraController.scan();
+ if (barcode == null) {
+  print('nothing return.');
+  } else {
+  this.outputController.text = barcode;
+   print(barcode);
+   }
+ }
+</code></pre>
+<h1 id="add-ocr">Add OCR</h1>
+<pre class="language-dart"><code>int _cameraOcr = MyCamera.CAMERA_BACK;
+ bool _autoFocusOcr = true;
+ bool _torchOcr = false;
+ bool _multipleOcr = true;
+ bool _waitTapOcr = true;
+ bool _showTextOcr = true;
+ Call _previewOcr;
+ List&lt;OcrText&gt; _textsOcr = [];
+
+Future&lt;Null&gt; _read() async {
+ List&lt;OcrText&gt; texts = [];
+   try {
+       texts = await MyCameraPlugin.read(
+       flash: _torchOcr,
+       autoFocus: _autoFocusOcr,
+       multiple: _multipleOcr,
+       waitTap: _waitTapOcr,
+       showText: _showTextOcr,
+       preview: _previewOcr,
+       camera: _cameraOcr,
+       fps: 2.0,
+);
+   } on Exception {
+     texts.add(OcrText(''))
+}
+   if (!mounted) return;
+   setState(() =&gt; _textsOcr = texts);
+ }
+</code></pre>
+<h1 id="example">Example</h1>
+<pre class="language-dart"><code>import 'dart:async';
+import 'dart:io';
+import 'dart:typed_data';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:custom_camera_v2/my_cameranew.dart';
+
+void main() {
+ String id = DateTime.now().toIso8601String();
+ runApp(MaterialApp(home: MyApp(id: id)));
+}
+
+class MyApp extends StatefulWidget {
+ final String id;
+
+ const MyApp({Key key, this.id}) : super(key: key);
+
+ @override
+ _MyAppState createState() =&gt; _MyAppState();
+}
+
+class _MyAppState extends State&lt;MyApp&gt; {
+ List&lt;String&gt; pictureSizes = [];
+ String imagePath;
+ Uint8List bytes = Uint8List(0);
+ TextEditingController _inputController;
+ TextEditingController outputController;
+ MyCameraController cameraController;
+
+ @override
+ initState() {
+   super.initState();
+   this._inputController = new TextEditingController();
+   this.outputController = new TextEditingController();
+ }
+
+ @override
+ Widget build(BuildContext context) {
+   return Scaffold(
+     appBar: AppBar(
+       title: const Text('Home'),
+     ),
+     body: SafeArea(
+       child: Stack(
+         children: [
+           Column(
+             children: [
+               Container(
+                 color: Colors.transparent,
+                 child: Row(
+                   children: [
+                   // Flash light off button. clicking on the button will turn off the torch.
+                     IconButton(
+                       icon: Icon(
+                         Icons.flash_off_outlined,
+                         color: Colors.black,
+                       ),
+                       onPressed: () {
+                         cameraController.setFlashType(FlashType.off);
+                       },
+                     ),
+                    // Flash light on button. click on the button on the torch.
+                     IconButton(
+                       icon: Icon(
+                         Icons.flash_on,
+                         color: Colors.black,
+                       ),
+                       onPressed: () {
+                         cameraController.setFlashType(FlashType.torch);
+                       },
+                     ),
+                   ],
+                 ),
+               ),
+               // This text field will show the url of the QR Code and BarCode.
+               TextField(
+                 controller: this.outputController,
+                 maxLines: 2,
+                 decoration: InputDecoration(
+                   prefixIcon: Icon(Icons.wrap_text),
+                   hintText:
+                       'The barcode or qr code you scan will be displayed in this area.',
+                   hintStyle: TextStyle(fontSize: 15),
+                   contentPadding:
+                       EdgeInsets.symmetric(horizontal: 7, vertical: 15),
+                 ),
+               ),
+               Expanded(
+                   child: Container(
+                 child: MyCamera(
+                   onCameraCreated: _onCameraCreated,
+                   onImageCaptured: (String path) {
+                     print("onImageCaptured =&gt; " + path);
+                     if (this.mounted)
+                       setState(() {
+                         imagePath = path;
+                       });
+                   },
+                   cameraPreviewRatio: CameraPreviewRatio.r16_9,
+                 ),
+               )),
+             ],
+           ),
+           Positioned(
+             bottom: 16.0,
+             left: 16.0,
+             child: imagePath != null
+                 ? Container(
+                     width: 100.0,
+                     height: 100.0,
+                     child: Image.file(File(imagePath)))
+                 : Icon(Icons.image),
+           )
+         ],
+       ),
+     ),
+  
+     floatingActionButton: Column(
+         crossAxisAlignment: CrossAxisAlignment.end,
+         mainAxisSize: MainAxisSize.min,
+         children: [
+         //switch camera button. This is for switching front and back camera.
+         
+           FloatingActionButton(
+             heroTag: 1,
+             child: Icon(Icons.switch_camera),
+             onPressed: () async {
+               await cameraController.switchCamera();
+               List&lt;FlashType&gt; types = await cameraController.getFlashType();
+             },
+           ),
+           Container(height: 16.0),
+           // this button is for capture the image.
+         
+           FloatingActionButton(
+               heroTag: 2,
+               child: Icon(Icons.camera_alt),
+               onPressed: () {
+                 cameraController.captureImage();
+               }),
+           Container(height: 16.0),
+           //Scan the QR code and Barcode.
+          
+           FloatingActionButton(
+               heroTag: 3,
+               child: Icon(Icons.scanner),
+               onPressed: () {
+                 _scan();
+               }),
+         
+         ]),
+   );
+ }
+
+ Future _scan() async {
+   String barcode = await cameraController.scan();
+
+   if (barcode == null) {
+     print('nothing return.');
+   } else {
+     this.outputController.text = barcode;
+     print(barcode);
+   }
+ }
+
+ _onCameraCreated(MyCameraController controller) {
+   this.cameraController = controller;
+
+   this.cameraController.getPictureSizes().then((pictureSizes) {
+     setState(() {
+       this.pictureSizes = pictureSizes;
+     });
+   });
+ }
+}
+
+</code></pre>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="lifecycle_handler">
+  <span class="name"><a href="lifecycle_handler/lifecycle_handler-library.html">lifecycle_handler</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="my_camera">
+  <span class="name"><a href="my_camera/my_camera-library.html">my_camera</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="my_camera_plugin">
+  <span class="name"><a href="my_camera_plugin/my_camera_plugin-library.html">my_camera_plugin</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+        </dl>
+      </section>
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="https://github.com/hello-addweb/my_camera.git">custom_camera_v2 package</a></li>
+</ol>
+
+
+    <h5 class="hidden-xs"><span class="package-name">custom_camera_v2</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="lifecycle_handler/lifecycle_handler-library.html">lifecycle_handler</a></li>
+      <li><a href="my_camera/my_camera-library.html">my_camera</a></li>
+      <li><a href="my_camera_plugin/my_camera_plugin-library.html">my_camera_plugin</a></li>
+</ol>
+
+  </div>
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+
+</main>
+
+<footer>
+  <span class="no-break">
+    custom_camera_v2
+      0.0.4
+  </span>
+
+  
+</footer>
+
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

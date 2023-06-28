@@ -28,6 +28,7 @@ class MyCameraController {
   final cameraaccessdenied = 'PERMISSION_NOT_GRANTED';
   final _MyCameraState _myCameraState;
 
+  /// handle the users click on image captured, or on flash type changed
   Future<dynamic> _handleMethodCall(MethodCall call) async {
     switch (call.method) {
       case "onImageCaptured":
@@ -43,6 +44,7 @@ class MyCameraController {
     }
   }
 
+  /// set the the session preset
   Future<void> setSessionPreset( cameraSessionPreset) async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     if (Platform.isAndroid) return;
@@ -57,7 +59,7 @@ class MyCameraController {
 
   //  _myCameraState.setState(() {});
   }
-
+/// set the preview ratio of camera
   Future<void> setPreviewRatio(CameraPreviewRatio cameraPreviewRatio) async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     if (Platform.isIOS) return;
@@ -88,23 +90,26 @@ class MyCameraController {
     }
   }
 
+  /// called when capture the image
   Future<void> captureImage({int? maxSize}) async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     await channel.invokeMethod('captureImage', <String, dynamic>{
       'maxSize': maxSize,
     });
   }
-
+/// called when switch the camera
   Future<void> switchCamera() async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     await channel.invokeMethod('switchCamera', null);
   }
 
+  /// turn off the camera
   Future<void> turnOffCamera() async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     await channel.invokeMethod('turnOff', null);
   }
 
+  /// get the picture size
   Future<List<String>?> getPictureSizes() async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
 
@@ -115,6 +120,7 @@ class MyCameraController {
     return List<String>.from(result);
   }
 
+  /// set the size of the picture
   Future<void> setPictureSize(int width, int height) async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
 
@@ -124,6 +130,7 @@ class MyCameraController {
     print("setPictureSize => $x");
   }
 
+  /// save the path
   Future<void> setSavePath(String savePath) async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     if (Platform.isIOS) return;
@@ -133,6 +140,7 @@ class MyCameraController {
     print("setSavePath => $x");
   }
 
+  /// set the flash light type is auto, on, off, torch
   Future<void> setFlashType(FlashType flashType) async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     String flashTypeString;
@@ -156,6 +164,7 @@ class MyCameraController {
     print("setFlashType => $x");
   }
 
+  /// get the flash type
   Future<List<FlashType>> getFlashType() async {
     final types = await channel.invokeMethod('getFlashType');
     print("getFlashType => $types");

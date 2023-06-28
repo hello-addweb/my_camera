@@ -51,7 +51,7 @@ class _HomeState extends State<Home> {
 
     return cameraItems;
   }
-
+/// OCR screen layout
   Widget _getOcrScreen(BuildContext context) {
     List<Widget> items = [];
 
