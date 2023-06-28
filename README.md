@@ -31,13 +31,13 @@ First, add custom_camera_v2 as a dependency in your pubspec.yaml file.
 <uses-permission android:name="android.permission.INTERNET"/> 
 
 //2.
-The permission android.permission.READ_EXTERNAL_STORAGE is used in Android applications to request access to read the external storage of the device. This permission allows the app to read files and folders from the user's external storage, such as the SD card or other storage locations.
-It's important to note that starting from Android 10 (API level 29), apps are required to use the Storage Access Framework (SAF) to access files on external storage. The READ_EXTERNAL_STORAGE permission is considered a "dangerous" permission, meaning that users have to explicitly grant it, and developers need to handle runtime permissions to request and obtain this permission from the user.
+// The permission android.permission.READ_EXTERNAL_STORAGE is used in Android applications to request access to read the external storage of the device. This permission allows the app to read files and folders from the user's external storage, such as the SD card or other storage locations.
+// It's important to note that starting from Android 10 (API level 29), apps are required to use the Storage Access Framework (SAF) to access files on external storage. The READ_EXTERNAL_STORAGE permission is considered a "dangerous" permission, meaning that users have to explicitly grant it, and developers need to handle runtime permissions to request and obtain this permission from the user.
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 //3.
 // The permission android.permission.WRITE_EXTERNAL_STORAGE is used in Android applications to allow the app to write data to external storage, such as the device's SD card or other external storage devices. This permission is necessary if the app needs to save or modify files on the user's device outside of its private internal storage.
-//It's worth noting that starting from Android 11 (API level 30), apps are generally encouraged to use more granular storage permissions, such as MANAGE_EXTERNAL_STORAGE, to request access to specific directories or types of files on external storage.
+// It's worth noting that starting from Android 11 (API level 30), apps are generally encouraged to use more granular storage permissions, such as MANAGE_EXTERNAL_STORAGE, to request access to specific directories or types of files on external storage.
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 //4., 5.
@@ -69,6 +69,7 @@ classpath 'com.karumi:dexter:6.0.0'
 ```
 import 'package:custom_camera_v2/my_cameranew.dart';
 
+/// 
  _onCameraCreated(MyCameraController controller) {
  this.cameraController = controller;
  this.cameraController.getPictureSizes().then((pictureSizes) {
@@ -203,7 +204,7 @@ class _MyAppState extends State<MyApp> {
                          cameraController.setFlashType(FlashType.off);
                        },
                      ),
-                    // Flash light on button. click on the button on the torch.
+                    /// Flash light on button. click on the button on the torch.
                      IconButton(
                        icon: Icon(
                          Icons.flash_on,
@@ -263,7 +264,7 @@ class _MyAppState extends State<MyApp> {
          crossAxisAlignment: CrossAxisAlignment.end,
          mainAxisSize: MainAxisSize.min,
          children: [
-         //switch camera button. This is for switching front and back camera.
+         // switch camera button. This is for switching front and back camera.
          
            FloatingActionButton(
              heroTag: 1,
@@ -283,7 +284,7 @@ class _MyAppState extends State<MyApp> {
                  cameraController.captureImage();
                }),
            Container(height: 16.0),
-           //Scan the QR code and Barcode.
+           // Scan the QR code and Barcode.
           
            FloatingActionButton(
                heroTag: 3,
@@ -296,6 +297,7 @@ class _MyAppState extends State<MyApp> {
    );
  }
 
+/// it will return the barcode
  Future _scan() async {
    String barcode = await cameraController.scan();
 
@@ -306,7 +308,8 @@ class _MyAppState extends State<MyApp> {
      print(barcode);
    }
  }
-
+ 
+/// get the picture size after calling this function.
  _onCameraCreated(MyCameraController controller) {
    this.cameraController = controller;
 
