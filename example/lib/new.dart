@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:custom_camera_v2/my_camera_plugin.dart';
 import 'package:custom_camera_v2/my_cameranew.dart';
@@ -11,9 +12,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // int _cameraBarcode = FlutterMobileVision.CAMERA_BACK;
-  // int _onlyFormatBarcode = Barcode.ALL_FORMATS;
-  //List<Barcode> _barcodes = [];
 
   int _cameraOcr = MyCamera.CAMERA_BACK;
   bool _autoFocusOcr = true;
@@ -21,22 +19,27 @@ class _HomeState extends State<Home> {
   bool _multipleOcr = true;
   bool _waitTapOcr = true;
   bool _showTextOcr = true;
-  Call? _previewOcr;
+  Call _previewOcr = Call(50, 50);
   List<OcrText> _textsOcr = [];
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('OCR'),
+    return WillPopScope(
+      onWillPop: () async {
+        return true;
+      },
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text('OCR'),
+          ),
+          /// Add OCR and R&D for OCR
+          body: Stack(children: [
+            _getOcrScreen(context),
+            // _getFaceScreen(context),
+          ]),
         ),
-        /// Add OCR and R&D for OCR
-        body: Stack(children: [
-          _getOcrScreen(context),
-          // _getFaceScreen(context),
-        ]),
       ),
     );
   }
@@ -72,7 +75,7 @@ class _HomeState extends State<Home> {
       child: DropdownButton(
         items: _getCameras(),
         onChanged: (value) {
-          _previewOcr = null;
+          _previewOcr = Call(50, 50);
           setState(() => _cameraOcr != value);
         },
         value: _cameraOcr,
@@ -153,7 +156,7 @@ class _HomeState extends State<Home> {
         multiple: _multipleOcr,
         waitTap: _waitTapOcr,
         showText: _showTextOcr,
-        preview: _previewOcr!,
+        preview: _previewOcr,
         camera: _cameraOcr,
         fps: 2.0,
       );

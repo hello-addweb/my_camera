@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 import 'package:custom_camera_v2/my_cameranew.dart';
 import 'package:flutter/foundation.dart';
@@ -36,6 +37,32 @@ class _MyAppState extends State<MyApp> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+        actions: [Container(
+          color: Colors.transparent,
+          child: Row(
+            children: [
+              /// Scanning Photo which gives more functionality of flashLight on or off
+              IconButton(
+                icon: Icon(
+                  Icons.flash_off_outlined,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  cameraController.setFlashType(FlashType.off);
+                },
+              ),
+              IconButton(
+                icon: Icon(
+                  Icons.flash_on,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  cameraController.setFlashType(FlashType.torch);
+                },
+              ),
+            ],
+          ),
+        ),],
       ),
       body: SafeArea(
         child: Stack(
@@ -43,36 +70,11 @@ class _MyAppState extends State<MyApp> {
             Column(
               children: [
                 /// How to create layouts ui container
-                Container(
-                  color: Colors.transparent,
-                  child: Row(
-                    children: [
-                      /// Scanning Photo which gives more functionality of flashLight on or off
-                      IconButton(
-                        icon: Icon(
-                          Icons.flash_off_outlined,
-                          color: Colors.black,
-                        ),
-                        onPressed: () {
-                          cameraController.setFlashType(FlashType.off);
-                        },
-                      ),
-                      IconButton(
-                        icon: Icon(
-                          Icons.flash_on,
-                          color: Colors.black,
-                        ),
-                        onPressed: () {
-                          cameraController.setFlashType(FlashType.torch);
-                        },
-                      ),
-                    ],
-                  ),
-                ),
                 /// The barcode or qrcode you scan will be displayed
                 TextField(
                   controller: this.outputController,
                   maxLines: 2,
+                  enabled: false,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.wrap_text),
                     hintText:
@@ -82,15 +84,16 @@ class _MyAppState extends State<MyApp> {
                         EdgeInsets.symmetric(horizontal: 7, vertical: 15),
                   ),
                 ),
-                /// Image Capture in camra
+                /// Image Capture in camera
                 Expanded(
                     child: Container(
                   child: MyCamera(
                     onCameraCreated: _onCameraCreated,
                     onImageCaptured: (String path) {
-                      print("onImageCaptured => " + path);
+                      log("onImageCaptured => " + path);
                       if (this.mounted)
                         setState(() {
+                          if(path.isNotEmpty)
                           imagePath = path;
                         });
                     },
@@ -106,7 +109,7 @@ class _MyAppState extends State<MyApp> {
                   ? Container(
                       width: 100.0,
                       height: 100.0,
-                      child: Image.file(File(imagePath!)))
+                      child: Image.file(File(imagePath!),),)
                   : Icon(Icons.image),
             )
           ],
@@ -116,7 +119,7 @@ class _MyAppState extends State<MyApp> {
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisSize: MainAxisSize.min,
           children: [
-            /// Switch camera tap buttion
+            /// Switch camera tap button
             FloatingActionButton(
               heroTag: 1,
               child: Icon(Icons.switch_camera),
@@ -125,7 +128,7 @@ class _MyAppState extends State<MyApp> {
               },
             ),
             Container(height: 16.0),
-            /// Camera alt tap buttion
+            /// Camera alt tap button
             FloatingActionButton(
                 heroTag: 2,
                 child: Icon(Icons.camera_alt),

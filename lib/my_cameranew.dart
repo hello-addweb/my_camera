@@ -1,6 +1,7 @@
 library my_camera;
 
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -252,6 +253,7 @@ class _MyCameraState extends State<MyCamera> {
   }
 
   void onImageCaptured(String path) {
+    log("path  $path");
     widget.onImageCaptured(path);
   }
 }
