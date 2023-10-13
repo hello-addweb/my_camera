@@ -44,8 +44,8 @@ class MyCameraPlugin {
       'multiple': multiple,
       'waitTap': waitTap,
       'showText': showText,
-      'previewWidth':  PREVIEW.width,
-      'previewHeight':  PREVIEW.height,
+      'previewWidth': PREVIEW.width,
+      'previewHeight': PREVIEW.height,
       'camera': camera,
       'fps': fps,
     };

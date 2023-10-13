@@ -15,7 +15,7 @@ class LifecycleEventHandler extends WidgetsBindingObserver {
   });
 
   @override
-  Future<Null> didChangeAppLifecycleState(AppLifecycleState state) async {
+  Future<Null> didChangeAppLifecycleState(state) async {
     switch (state) {
       case AppLifecycleState.resumed:
         await onResumed();
@@ -28,6 +28,9 @@ class LifecycleEventHandler extends WidgetsBindingObserver {
         break;
       case AppLifecycleState.detached:
         await onDetached();
+        break;
+      case AppLifecycleState.hidden:
+        // TODO: Handle this case.
         break;
     }
   }

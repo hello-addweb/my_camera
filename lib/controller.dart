@@ -3,17 +3,18 @@ part of my_camera;
 /// Controller for a single GoogleMap instance running on the host platform.
 class MyCameraController {
   MyCameraController._(
-      this.channel,
-      this._myCameraState,
-      ) {
+    this.channel,
+    this._myCameraState,
+  ) {
     channel.setMethodCallHandler(_handleMethodCall);
   }
 
   static Future<MyCameraController> init(
-      int id,
-      _MyCameraState myCameraState,
-      ) async {
-    final MethodChannel channel = MethodChannel('plugins.flutter.io/my_camera/$id');
+    int id,
+    _MyCameraState myCameraState,
+  ) async {
+    final MethodChannel channel =
+        MethodChannel('plugins.flutter.io/my_camera/$id');
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     await channel.invokeMethod('waitForCamera');
     return MyCameraController._(
@@ -24,6 +25,7 @@ class MyCameraController {
 
   @visibleForTesting
   final MethodChannel channel;
+
   //final CameraAccessDenied = 'PERMISSION_NOT_GRANTED';
   final cameraaccessdenied = 'PERMISSION_NOT_GRANTED';
   final _MyCameraState _myCameraState;
@@ -45,21 +47,20 @@ class MyCameraController {
   }
 
   /// set the the session preset
-  Future<void> setSessionPreset( cameraSessionPreset) async {
+  Future<void> setSessionPreset(cameraSessionPreset) async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     if (Platform.isAndroid) return;
 
     String? sessionPreset;
 
-
     await channel.invokeMethod('setSessionPreset', <String, dynamic>{
       'sessionPreset': sessionPreset,
     });
 
-
-  //  _myCameraState.setState(() {});
+    //  _myCameraState.setState(() {});
   }
-/// set the preview ratio of camera
+
+  /// set the preview ratio of camera
   Future<void> setPreviewRatio(CameraPreviewRatio cameraPreviewRatio) async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     if (Platform.isIOS) return;
@@ -81,7 +82,8 @@ class MyCameraController {
         break;
     }
 
-    bool success = await channel.invokeMethod('setPreviewRatio', <String, dynamic>{
+    bool success =
+        await channel.invokeMethod('setPreviewRatio', <String, dynamic>{
       'previewRatio': previewRatio,
     });
 
@@ -97,7 +99,8 @@ class MyCameraController {
       'maxSize': maxSize,
     });
   }
-/// called when switch the camera
+
+  /// called when switch the camera
   Future<void> switchCamera() async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
     await channel.invokeMethod('switchCamera', null);
@@ -124,8 +127,8 @@ class MyCameraController {
   Future<void> setPictureSize(int width, int height) async {
     // TODO(amirh): remove this on when the invokeMethod update makes it to stable Flutter.
 
-    var x = await channel
-        .invokeMethod('setPictureSize', {"pictureWidth": width, "pictureHeight": height});
+    var x = await channel.invokeMethod(
+        'setPictureSize', {"pictureWidth": width, "pictureHeight": height});
 
     print("setPictureSize => $x");
   }
@@ -159,7 +162,8 @@ class MyCameraController {
         flashTypeString = "torch";
         break;
     }
-    var x = await channel.invokeMethod('setFlashType', {"flashType": flashTypeString});
+    var x = await channel
+        .invokeMethod('setFlashType', {"flashType": flashTypeString});
 
     print("setFlashType => $x");
   }
@@ -187,18 +191,19 @@ class MyCameraController {
     }
     return finalTypes;
   }
+
   Future<String> scan() async => await channel.invokeMethod('scan');
 
   /// Scanning Photo Bar Code or QR Code return content
   Future<String> scanPhoto() async => await channel.invokeMethod('scan_photo');
 
-/// Scanning the image of the specified path
+  /// Scanning the image of the specified path
   Future<String> scanPath(String path) async {
     assert(path.isNotEmpty);
     return await channel.invokeMethod('scan_path', {"path": path});
   }
 
-/// Parse to code string with uint8list
+  /// Parse to code string with uint8list
   Future<String> scanBytes(Uint8List uint8list) async {
     assert(uint8list.isNotEmpty);
     return await channel.invokeMethod('scan_bytes', {"bytes": uint8list});

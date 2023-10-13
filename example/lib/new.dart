@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:custom_camera_v2/my_camera_plugin.dart';
 import 'package:custom_camera_v2/my_cameranew.dart';
@@ -12,7 +11,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   int _cameraOcr = MyCamera.CAMERA_BACK;
   bool _autoFocusOcr = true;
   bool _torchOcr = false;
@@ -34,6 +32,7 @@ class _HomeState extends State<Home> {
           appBar: AppBar(
             title: Text('OCR'),
           ),
+
           /// Add OCR and R&D for OCR
           body: Stack(children: [
             _getOcrScreen(context),
@@ -54,7 +53,8 @@ class _HomeState extends State<Home> {
 
     return cameraItems;
   }
-/// OCR screen layout
+
+  /// OCR screen layout
   Widget _getOcrScreen(BuildContext context) {
     List<Widget> items = [];
 
@@ -144,7 +144,6 @@ class _HomeState extends State<Home> {
       children: items,
     );
   }
-
 
   /// OCR Method
   Future<Null> _read() async {

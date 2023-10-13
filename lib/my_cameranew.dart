@@ -41,7 +41,7 @@ class MyCamera extends StatefulWidget {
     bool? bestPictureSize,
     required this.onCameraCreated,
     required this.onImageCaptured,
-     this.fileNamePrefix,
+    this.fileNamePrefix,
   })  : this.initialCameraType = initialCameraType ?? CameraType.rear,
         this.cameraPreviewRatio =
             cameraPreviewRatio ?? CameraPreviewRatio.r16_9,
@@ -97,7 +97,8 @@ class _MyCameraState extends State<MyCamera> {
         flashType = "torch";
         break;
     }
-/// Camera preview ratio
+
+    /// Camera preview ratio
     switch (_cameraPreviewRatio) {
       case CameraPreviewRatio.r16_9:
         previewRatio = "16:9";

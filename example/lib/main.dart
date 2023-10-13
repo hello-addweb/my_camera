@@ -8,10 +8,9 @@ import 'new.dart';
 
 void main() {
   String id = DateTime.now().toIso8601String();
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-      home: MyApp(id: id)));
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp(id: id)));
 }
+
 class MyApp extends StatefulWidget {
   final String? id;
   const MyApp({Key? key, this.id}) : super(key: key);
@@ -37,32 +36,34 @@ class _MyAppState extends State<MyApp> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
-        actions: [Container(
-          color: Colors.transparent,
-          child: Row(
-            children: [
-              /// Scanning Photo which gives more functionality of flashLight on or off
-              IconButton(
-                icon: Icon(
-                  Icons.flash_off_outlined,
-                  color: Colors.black,
+        actions: [
+          Container(
+            color: Colors.transparent,
+            child: Row(
+              children: [
+                /// Scanning Photo which gives more functionality of flashLight on or off
+                IconButton(
+                  icon: Icon(
+                    Icons.flash_off_outlined,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    cameraController.setFlashType(FlashType.off);
+                  },
                 ),
-                onPressed: () {
-                  cameraController.setFlashType(FlashType.off);
-                },
-              ),
-              IconButton(
-                icon: Icon(
-                  Icons.flash_on,
-                  color: Colors.black,
+                IconButton(
+                  icon: Icon(
+                    Icons.flash_on,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    cameraController.setFlashType(FlashType.torch);
+                  },
                 ),
-                onPressed: () {
-                  cameraController.setFlashType(FlashType.torch);
-                },
-              ),
-            ],
+              ],
+            ),
           ),
-        ),],
+        ],
       ),
       body: SafeArea(
         child: Stack(
@@ -84,6 +85,7 @@ class _MyAppState extends State<MyApp> {
                         EdgeInsets.symmetric(horizontal: 7, vertical: 15),
                   ),
                 ),
+
                 /// Image Capture in camera
                 Expanded(
                     child: Container(
@@ -93,8 +95,7 @@ class _MyAppState extends State<MyApp> {
                       log("onImageCaptured => " + path);
                       if (this.mounted)
                         setState(() {
-                          if(path.isNotEmpty)
-                          imagePath = path;
+                          if (path.isNotEmpty) imagePath = path;
                         });
                     },
                     cameraPreviewRatio: CameraPreviewRatio.r16_9,
@@ -109,7 +110,10 @@ class _MyAppState extends State<MyApp> {
                   ? Container(
                       width: 100.0,
                       height: 100.0,
-                      child: Image.file(File(imagePath!),),)
+                      child: Image.file(
+                        File(imagePath!),
+                      ),
+                    )
                   : Icon(Icons.image),
             )
           ],
@@ -128,6 +132,7 @@ class _MyAppState extends State<MyApp> {
               },
             ),
             Container(height: 16.0),
+
             /// Camera alt tap button
             FloatingActionButton(
                 heroTag: 2,
